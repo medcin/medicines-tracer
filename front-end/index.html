@@ -1,12 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>medicine tracker</title>
+	<title>My Health Website</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		/* Define the styles for the common elements of the website */
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+		
+		nav {
+			background-color: #eee;
+			padding: 10px;
+		}
+		
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		nav li {
+			display: inline-block;
+			margin-right: 10px;
+		}
+		
+		nav li a {
+			color: #333;
+			text-decoration: none;
+			padding: 5px;
+		}
+		
+		nav li a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+		
+		section {
+			padding: 10px;
+		}
+		
+		h1 {
+			margin-top: 0;
+		}
+	</style>
 </head>
 <body>
-    <h1 style="text-align: center;">WELCOME TO OUR APP!</h1>
+	<header>
+		<h1>My Health Website</h1>
+	</header>
+	
+	<nav>
+		<ul>
+			<li><a href="#home">Home</a></li>
+			<li><a href="#my-meds">My Meds</a></li>
+			<li><a href="#health-news">Health News</a></li>
+			<li><a href="#x">X</a></li>
+			<li><a href="#settings">Settings</a></li>
+		</ul>
+	</nav>
+	
+	<section id="home">
+		<h1>Welcome to My Health Website</h1>
+		<p>This is the home page of my health website. Here, you can find information about staying healthy and managing your health.</p>
+	</section>
+	
+	<section id="my-meds">
+		<h1>My Meds</h1>
+		<p>On this page, you can view and manage your medications. You can add new medications, view your medication history, and set reminders for when to take your medications.</p>
+	</section>
+	
+	<section id="health-news">
+		<h1>Health News</h1>
+		<p>Stay up-to-date on the latest health news and trends on this page. We cover a wide range of health topics, including nutrition, exercise, and disease prevention.</p>
+	</section>
+	
+	<section id="x">
+		<h1>X</h1>
+		<p>This page is under construction. Check back soon for updates!</p>
+	</section>
+	
+	<section id="settings">
+		<h1>Settings</h1>
+		<p>You can customize your experience on this website by adjusting your settings on this page. You can change your notification preferences, update your account information, and more.</p>
+	</section>
+	
+	<script>
+		// Use JavaScript to toggle the visibility of the sections based on the URL hash
+		function showPage() {
+			var hash = window.location.hash.substring(1);
+			var sections = document.getElementsByTagName("section");
+			for (var i = 0; i < sections.length; i++) {
+				if (sections[i].getAttribute("id") === hash) {
+					sections[i].style.display = "block";
+				} else {
+					sections[i].style.display = "none";
+				}
+			}
+		}
+		
+		window.addEventListener("load", showPage);
+		window.addEventListener("hashchange", showPage);
+	</script>
 </body>
 </html>
+
+
+
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home - My Website</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<header>
+		<h1>Welcome to My Website</h1>
+		<nav>
+			<ul>
+				<li><a href="home.html">Home</a></li>
+				<li><a href="my-medics.html">My Medics</a></li>
+				<li><a href="XBC.html">XBC</a></li>
+				<li><a href="XBY.html">XBY</a></li>
+				<li><a href="setting.html">Setting</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h2>About Me</h2>
+		<p>Here's some information about me.</p>
+	</main>
+	<footer>
+		<p>Copyright &copy; My Website</p>
+	</footer>
+</body>
+</html>
+-->
