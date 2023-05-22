@@ -6,8 +6,8 @@ export default function Signup() {
       <div>
         <h1>Sign up</h1>
         {/* Signup form goes here */}
-        <NextLink href="/login">
-          Login
+        <NextLink href="/">
+          Home
         </NextLink>
       </div>
     );
