@@ -4,7 +4,6 @@ const path = require("path");
 
 router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/../../front-end/html/welcome.html"));
-  res.render(path.join(__dirname, "/../../../../layout/layout.hbs"));
 });
 //===================
 router.get("/signup", (req, res) => {
@@ -17,7 +16,6 @@ router.get("/login", (req, res) => {
 //===================
 router.get("/home", (req, res) => {
   res.sendFile(path.join(__dirname, "/../../front-end/html/home.html"));
-  res.render(path.join(__dirname, "/layout/test.hbs"));
 });
 //===================
 router.get("/my-meds", (req, res) => {

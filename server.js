@@ -2,21 +2,8 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const router = require("./public/back-end/routes/routing.js");
-const hbs = require("express-handlebars");
 const app = express();
 
-
-app.set("views", path.join(__dirname, "/layout/main"));
-app.set("view engine", "hbs");
-app.engine(
-  "hbs",
-  hbs.engine({
-    extname:"hbs",
-    defaultLayout: "layout",
-    layoutsDir: path.join(__dirname, "./layout/main"),
-    partialsDir: path.join(__dirname, "./layout/header&footer"),
-  })
-);
 // app uses
 app.use(express.static("public")); // insteed of sending every file alone this would help u sending one file
 app.use(bodyParser()); // this allow u to manage reqs
