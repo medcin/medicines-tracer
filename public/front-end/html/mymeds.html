@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
+          
   <html>
+  <!--  
     <head>
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -88,3 +91,94 @@
     </body>
   </html>
 </html>
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>medicine tracker</title>
+
+  </head>
+
+
+
+
+  <body>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a class="active" href="mymeds.html">my-medicien</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  
+  
+  </body>
+  </html>
+  <!DOCTYPE html>
+<html>
+<head>
+	<title>Medicine Lookup Form</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		// Use jQuery to handle form submission
+		$(function() {
+			$('form').submit(function(event) {
+				event.preventDefault();
+				
+				// Get the form data
+				var clientNumber = $('#client-number').val();
+				var email = $('#email').val();
+				var medicine = $('#medicine').val();
+				
+				// Use the OpenFDA API to lookup information about the medicine
+				$.get('https://api.fda.gov/drug/label.json?search=openfda.brand_name:' + medicine, function(data) {
+					var results = data.results;
+					if (results.length > 0) {
+						var name = results[0].openfda.brand_name[0];
+						var description = results[0].description;
+						var dosage = results[0].dosage_and_administration[0];
+						$('#medicine-name').text(name);
+						$('#medicine-description').text(description);
+						$('#medicine-dosage').text(dosage);
+					} else {
+						alert('No information found for medicine ' + medicine);
+						$('#medicine-name').text('');
+						$('#medicine-description').text('');
+						$('#medicine-dosage').text('');
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Medicine Lookup Form</h1>
+	<form>
+		<label for="client-number">Client Number:</label>
+		<input type="text" id="client-number" name="client-number"><br>
+		
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email"><br>
+		
+		<label for="medicine">Medicine:</label>
+		<input type="text" id="medicine" name="medicine"><br>
+		
+		<button type="submit">Lookup Medicine</button>
+	</form>
+	
+	<h2>Medicine Information</h2>
+	<p><strong>Name:</strong> <span id="medicine-name"></span></p>
+	<p><strong>Description:</strong> <span id="medicine-description"></span></p>
+	<p><strong>Dosage and Administration:</strong> <span id="medicine-dosage"></span></p>
+
+   <script src="index.js"></script>
+  
+</body>
+
+
+</html>
+
