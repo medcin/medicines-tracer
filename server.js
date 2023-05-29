@@ -16,6 +16,17 @@ app.use("/", router); // router configeration you need it to use router.get but 
 // post pages
 
 
+router.post("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/welcome.html"));
+});
+router.post("/signup", (req, res) => {
+  console.log(req.body);
+  res.sendFile(path.join(__dirname, "/public/front-end/html/signup.html"));
+});
+router.post("/mymeds", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/medsTable.html"));
+});
+
 router.post("/otp", async (req, res) => {
 try {
   console.log(req.body);
