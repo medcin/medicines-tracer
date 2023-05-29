@@ -22,8 +22,8 @@ router.get("/home", (req, res) => {
 
 });
 //===================
-router.get("/my-meds", (req, res) => {
-  res.sendFile(path.join(__dirname, "/../../front-end/html/mymeds.html"));
+router.get("/mymeds", (req, res) => {
+  res.sendFile(path.join(__dirname, "/../../front-end/html/medsTable.html"));
 });
 //===================
 router.get("/health-news", (req, res) => {
