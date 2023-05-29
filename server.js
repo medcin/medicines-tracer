@@ -2,7 +2,6 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const router = require("./public/back-end/routes/routing.js");
-const pool = require("./public/back-end/db.js");
 
 const app = express();
 
@@ -15,32 +14,23 @@ app.use("/", router); // router configeration you need it to use router.get but 
 
 // post pages
 
-
-router.post("/otp", async (req, res) => {
-try {
+router.post("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/welcome.html"));
+});
+router.post("/signup", (req, res) => {
+  console.log(req.body);
+  res.sendFile(path.join(__dirname, "/public/front-end/html/signup.html"));
+});
+router.post("/mymeds", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/medsTable.html"));
+});
+router.post("/login", (req, res) => {
   console.log(req.body);
   /* User registeration info are fetched successfully
   We just need to send it to the database*/
-  const { user } = req.body;
-  // const newUser = await pool.query("")
-  res.sendFile(path.join(__dirname, "/public/front-end/html/otp.html"));
-} catch (error) {
-    console.error(error.message);
-}
+  const {} = req.body;
+  res.sendFile(path.join(__dirname, "/public/front-end/html/login.html"));
 });
-
-router.post("/main", (req, res) => {
-  try {
-    const { otp } = req.body;
-    console.log(req.body);
-    /* User registeration info are fetched successfully
-    We just need to send it to the database*/
-    
-    res.sendFile(path.join(__dirname, "/public/front-end/html/main.html"));
-  } catch (error) {
-      console.error(error.message);
-  }
-  });
 
 router.post("/home", (req, res) => {
   console.log(req.body);
@@ -62,6 +52,6 @@ router.post("/user", (req, res) => {
 
 });
 
-app.listen(5500, () => {
-  console.log("hi");
+app.listen(3000, () => {
+  console.log("hi on 3000");
 });
