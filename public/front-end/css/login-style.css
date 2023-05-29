@@ -24,6 +24,13 @@ body{
 	font-weight: bold;
 	color: #130f40;
 }
+
+.otp_label {
+	padding: 20px 130px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #130f40;
+}
 .login_form{
 	padding: 20px 40px;
 }
