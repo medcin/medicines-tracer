@@ -14,7 +14,13 @@ app.use("/", router); // router configeration you need it to use router.get but 
 
 // post pages
 
-
+router.post("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/welcome.html"));
+});
+router.post("/signup", (req, res) => {
+  console.log(req.body);
+  res.sendFile(path.join(__dirname, "/public/front-end/html/signup.html"));
+});
 router.post("/login", (req, res) => {
   console.log(req.body);
   /* User registeration info are fetched successfully
@@ -43,6 +49,6 @@ router.post("/user", (req, res) => {
 
 });
 
-app.listen(5500, () => {
-  console.log("hi");
+app.listen(3000, () => {
+  console.log("hi on 3000");
 });
