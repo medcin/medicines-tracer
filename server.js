@@ -32,7 +32,7 @@ try {
   console.log(req.body);
   /* User registeration info are fetched successfully
   We just need to send it to the database*/
-  const newUser = await pool.query("INSERT INTO public.users (name, phone, email, password, username) VALUES ($1, $2, $3, $4, $5) RETURNING *", [req.body.fullName, req.body.number, req.body.email, req.body.password, req.body.userName])
+  //const newUser = await pool.query("INSERT INTO public.users (name, phone, email, password, username) VALUES ($1, $2, $3, $4, $5) RETURNING *", [req.body.fullName, req.body.number, req.body.email, req.body.password, req.body.userName])
   res.sendFile(path.join(__dirname, "/public/front-end/html/otp.html"));
 } catch (error) {
     console.error(error.message);
