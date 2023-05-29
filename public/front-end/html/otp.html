@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Validated Login Form</title>
+	<link rel="stylesheet" href="/front-end/css/login-style.css">
+</head>
+<body>
+	<div class="container">
+		<span class="otp_label">
+            <h3 style="padding-left: 40px;">Confirm your number</h3>
+        </span>
+		<form class="login_form" action="/main" method="post" name="form" onsubmit="return validated()">
+			<div class="font font2">OTP number</div>
+			<input type="text" name="otp">
+			<div id="pass_error">Please fill up your Password</div>
+			<button type="submit">Confirm</button>
+		</form>
+	</div>	
+	<script src="/back-end/otp.js"></script>
+</body>
+</html>
