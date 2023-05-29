@@ -30,5 +30,7 @@ class OTP {
 }
 
   // Example usage:
+  /*
 const otp = new OTP("+966543155333");
 otp.sendOTP();
+*/
