@@ -1,4 +1,6 @@
 package-lock.json
 package.json
-keys.env
 node_modules/
+.env
+*.env
+*.env.*
