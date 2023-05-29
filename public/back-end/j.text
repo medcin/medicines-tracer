@@ -138,3 +138,42 @@ class MsgHandelr{
   // Example usage:
 const otp = new OTP("+966543155333");
 otp.sendOTP();*/
+
+===================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+  var Calendar = tui.Calendar; // Make sure tui.Calendar is available
+
+  var calendar = new Calendar("#calendar", {
+    defaultView: "week",
+
+    taskView: true,
+
+    template: {
+      monthDayname: function (dayname) {
+        return (
+          '<span class="calendar-week-dayname-name">' +
+          dayname.label +
+          "</span>"
+        );
+      },
+    },
+  });
+
+  calendar.createSchedules([
+    {
+      id: "1",
+
+      calendarId: "1",
+
+      title: "Sample Event",
+
+      category: "time",
+
+      start: "2023-05-29T09:00:00",
+
+      end: "2023-05-29T10:00:00",
+    },
+  ]);
+});
+=============================
