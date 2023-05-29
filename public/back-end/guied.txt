@@ -1,0 +1,34 @@
+html:
+creat a form with id appointmentform
+    input == title == panadol   // diff id
+    input == start == 2023-05-29T22:30:00+09:00 // diff id
+    input == end == 2023-05-29T23:30:00+09:00 // diff id
+    button == submit == submit // diff id
+js:
+
+
+var form = document.getElementById("appointmentform");
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const title = document.getElementById("title").value;
+    const start = document.getElementById("start").value;
+    const end = document.getElementById("end").value;
+    
+    var appointment = { 
+        id: String(date.now()),
+        calendarId: "1",
+        title: title,
+        category: "time",
+        dueDateClass: "",
+        start: start,
+        end: end,
+    }
+
+
+calendar.createEvents([
+    appointment
+
+]);
+});
+
+form.reset();
