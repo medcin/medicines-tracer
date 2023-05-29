@@ -21,6 +21,9 @@ router.post("/signup", (req, res) => {
   console.log(req.body);
   res.sendFile(path.join(__dirname, "/public/front-end/html/signup.html"));
 });
+router.post("/mymeds", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/medsTable.html"));
+});
 router.post("/login", (req, res) => {
   console.log(req.body);
   /* User registeration info are fetched successfully
