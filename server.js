@@ -16,18 +16,31 @@ app.use("/", router); // router configeration you need it to use router.get but 
 // post pages
 
 
-router.post("/login", async (req, res) => {
+router.post("/otp", async (req, res) => {
 try {
   console.log(req.body);
   /* User registeration info are fetched successfully
   We just need to send it to the database*/
   const { user } = req.body;
-  const newUser = await pool.query("")
-  res.sendFile(path.join(__dirname, "/public/front-end/html/login.html"));
+  // const newUser = await pool.query("")
+  res.sendFile(path.join(__dirname, "/public/front-end/html/otp.html"));
 } catch (error) {
     console.error(error.message);
 }
 });
+
+router.post("/main", (req, res) => {
+  try {
+    const { otp } = req.body;
+    console.log(req.body);
+    /* User registeration info are fetched successfully
+    We just need to send it to the database*/
+    
+    res.sendFile(path.join(__dirname, "/public/front-end/html/main.html"));
+  } catch (error) {
+      console.error(error.message);
+  }
+  });
 
 router.post("/home", (req, res) => {
   console.log(req.body);
