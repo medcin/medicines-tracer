@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const router = require("./public/back-end/routes/routing.js");
+const pool = require("./public/back-end/db.js");
 
 const app = express();
 
@@ -15,12 +16,17 @@ app.use("/", router); // router configeration you need it to use router.get but 
 // post pages
 
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
+try {
   console.log(req.body);
   /* User registeration info are fetched successfully
   We just need to send it to the database*/
-  const {} = req.body;
+  const { user } = req.body;
+  const newUser = await pool.query("")
   res.sendFile(path.join(__dirname, "/public/front-end/html/login.html"));
+} catch (error) {
+    console.error(error.message);
+}
 });
 
 router.post("/home", (req, res) => {
