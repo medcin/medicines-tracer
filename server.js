@@ -18,11 +18,11 @@ app.use("/", router); // router configeration you need it to use router.get but 
 
 router.post("/otp", async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     /* User registeration info are fetched successfully
   We just need to send it to the database*/
     const { fullName, userName, email, number, password } = req.body;
-    console.log(fullName, userName, email, number, password);
+    // console.log(fullName, userName, email, number, password);
     const newUser = await pool.query(
       "INSERT INTO public.users (name, phone, email, password, username) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [fullName, number, email, password, userName]
@@ -46,12 +46,32 @@ router.post("/login", (req, res) => {
   }
 });
 
-router.post("/home", (req, res) => {
-  console.log(req.body);
-  /* User login info are fetched successfully
-  We just need to verify it*/
-  const {} = req.body;
-  res.sendFile(path.join(__dirname, "/public/front-end/html/home.html"));
+router.post("/home", async (req, res) => {
+  try {
+    console.log(req.body);
+
+    /* User login info are fetched successfully
+    We just need to verify it*/
+    const { email, password } = req.body;
+    // console.log("SELECT * from public.users WHERE email= $1 , password= $2 ", [
+    //   email,
+    //   password,
+    // ]);
+
+    const user = await pool.query(
+      "SELECT * from public.users WHERE email= $1 AND password= $2",
+      [email, password]
+    );
+
+    console.log(user.rows);
+    if (user.rows.length > 0) {
+      res.sendFile(path.join(__dirname, "/public/front-end/html/home.html"));
+    } else {
+      res.send("The email or password is wrong");
+    }
+  } catch (error) {
+    res.send(error.message);
+  }
 });
 
 app.listen(5500, () => {
