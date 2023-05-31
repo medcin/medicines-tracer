@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Account verefication</title>
+	<link rel="stylesheet" href="/front-end/css/login-style.css">
+</head>
+<body>
+	<div class="container">
+		<span class="otp_label">
+            <h3 style="padding-left: 40px;">Confirm your number</h3>
+        </span>
+		<form class="login_form" action="/login" method="post" name="otp" onsubmit="return validated()">
+			<div class="font font2">OTP number</div>
+			<input type="text" name="otp">
+			<div id="pass_error">Please fill up your OTP</div>
+			<button type="submit">Confirm</button>
+		</form>
+	</div>	
+	<script src="/back-end/OTP.js"></script>
+</body>
+</html>
