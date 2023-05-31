@@ -8,6 +8,9 @@ console.log(process.env.DB_PASSWORD, ' asd');
 
 const Pool = require("pg").Pool
 const pool = new Pool({
+    ssl: {
+        rejectUnauthorized: false
+    },
     user: dbUsername,
     password: dbPassword,
     database: dbDatabase,

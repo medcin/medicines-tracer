@@ -31,14 +31,14 @@ try {
 }
 });
 
-router.post("/main", (req, res) => {
+router.post("/login", (req, res) => {
   try {
     const { otp } = req.body;
     console.log(req.body);
     /* User registeration info are fetched successfully
     We just need to send it to the database*/
     
-    res.sendFile(path.join(__dirname, "/public/front-end/html/main.html"));
+    res.sendFile(path.join(__dirname, "/public/front-end/html/login.html"));
   } catch (error) {
       console.error(error.message);
   }
@@ -50,18 +50,6 @@ router.post("/home", (req, res) => {
   We just need to verify it*/
   const {} = req.body;
   res.sendFile(path.join(__dirname, "/public/front-end/html/home.html"));
-
-  /*
-router.post("/user", (req, res) => {
-  console.log(req.body);
-  /* insted of doing it like
-  const x = req.body.x
-  x is the attrubite name
-  such as adress or somthing //*
-  const {} = req.body;
-  res.json({ msg: "I'm here" });
-  */
-
 });
 
 app.listen(5500, () => {
