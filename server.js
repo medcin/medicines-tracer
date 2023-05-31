@@ -46,7 +46,7 @@ router.post("/login", (req, res) => {
   }
 });
 
-router.post("/home", async (req, res) => {
+router.post("/main", async (req, res) => {
   try {
     console.log(req.body);
 
@@ -65,7 +65,7 @@ router.post("/home", async (req, res) => {
 
     console.log(user.rows);
     if (user.rows.length > 0) {
-      res.sendFile(path.join(__dirname, "/public/front-end/html/home.html"));
+      res.sendFile(path.join(__dirname, "/public/front-end/html/main.html"));
     } else {
       res.send("The email or password is wrong");
     }
