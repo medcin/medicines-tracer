@@ -34,13 +34,15 @@ router.get("/settings", (req, res) => {
   res.sendFile(path.join(__dirname, "/../../front-end/html/settings.html"));
 });
 //===================
+router.get("/otp", (req, res) => {
+  res.sendFile(path.join(__dirname, "/../../front-end/html/otp.html"));
+});
+//===================
 // the * means any miss spiled rout will lead to 404 page
 router.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/../../front-end/html/404.html"));
 });
 //===================
-router.get("/otp", (req, res) => {
-  res.sendFile(path.join(__dirname, "/../../front-end/html/otp.html"));
-});
+
 
 module.exports = router; // will make this file avalible outside this folder
