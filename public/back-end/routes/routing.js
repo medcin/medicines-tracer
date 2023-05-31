@@ -18,12 +18,12 @@ router.get("/login", (req, res) => {
 //===================
 router.get("/home", (req, res) => {
 
-  res.sendFile(path.join(__dirname, "/../../front-end/html/main.html"));
+  res.sendFile(path.join(__dirname, "/../../front-end/html/home.html"));
 
 });
 //===================
-router.get("/mymeds", (req, res) => {
-  res.sendFile(path.join(__dirname, "/../../front-end/html/medsTable.html"));
+router.get("/my-meds", (req, res) => {
+  res.sendFile(path.join(__dirname, "/../../front-end/html/mymeds.html"));
 });
 //===================
 router.get("/health-news", (req, res) => {
@@ -39,5 +39,8 @@ router.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/../../front-end/html/404.html"));
 });
 //===================
+router.get("/otp", (req, res) => {
+  res.sendFile(path.join(__dirname, "/../../front-end/html/otp.html"));
+});
 
 module.exports = router; // will make this file avalible outside this folder
