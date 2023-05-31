@@ -16,14 +16,14 @@ router.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "/../../front-end/html/login.html"));
 });
 //===================
-router.get("/home", (req, res) => {
+router.get("/main", (req, res) => {
 
-  res.sendFile(path.join(__dirname, "/../../front-end/html/home.html"));
+  res.sendFile(path.join(__dirname, "/../../front-end/html/main.html"));
 
 });
 //===================
 router.get("/my-meds", (req, res) => {
-  res.sendFile(path.join(__dirname, "/../../front-end/html/mymeds.html"));
+  res.sendFile(path.join(__dirname, "/../../front-end/html/medsTable.html"));
 });
 //===================
 router.get("/health-news", (req, res) => {
