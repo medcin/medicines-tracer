@@ -44,9 +44,6 @@ initializePassport(
 const app = express();
 
 // app uses
-app.use(express.static("public")); // insteed of sending every file alone this would help u sending one file
-app.use(bodyParser()); // this allow u to manage reqs
-app.use("/", router); // router configeration you need it to use router.get but app.get u don't need to do that
 app.use(flash());
 app.use(
   session({
@@ -55,6 +52,11 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use(express.static("public")); // insteed of sending every file alone this would help u sending one file
+app.use(bodyParser()); // this allow u to manage reqs
+app.use("/", router); // router configeration you need it to use router.get but app.get u don't need to do that
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
@@ -72,6 +74,7 @@ router.post("/otp", async (req, res) => {
       "INSERT INTO public.users (name, phone, email, password, username) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [fullName, number, email, hashedPassword, userName]
     );
+    console.log(newUser)
     res.redirect("/otp");
   } catch {
     res.redirect("/signup");

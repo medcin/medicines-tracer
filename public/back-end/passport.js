@@ -8,15 +8,17 @@ async function initialize(passport, getUserByEmail, getUserById) {
         // console.log(password)
         const user = await getUserByEmail(email)
         if (user == null) {
-            // console.log('yarb ashof altext ha4a')
+            console.log('yarb ashof altext ha4a')
             return done(null, false, { message: "Login information are incorrect!"} )
         }
 
         try {
             
             if(await bcrypt.compare(password, user.rows[0].password)) {
+                console.log("success")
                 return done(null, user)
             } else {
+                console.log("failed")
                 return done(null, false, {message: "Login information are incorrect!"})
             }
         } catch (error) {
