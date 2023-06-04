@@ -8,6 +8,7 @@ const { log } = require("console");
 const bcrypt = require("bcrypt");
 const flash = require("express-flash");
 const session = require("express-session");
+const methodOverride = require('method-override')
 
 const cookieParser = require('cookie-parser');
 
@@ -55,6 +56,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride('_method'))
 app.use(express.static("public")); // insteed of sending every file alone this would help u sending one file
 app.use(bodyParser()); // this allow u to manage reqs
 app.use(router); // router configeration you need it to use router.get but app.get u don't need to do that
@@ -140,7 +142,6 @@ router.post("/login", (req, res) => {
 });
 
 // Login
-
 router.post(
   "/main",
   passport.authenticate("local", {
@@ -149,6 +150,13 @@ router.post(
     failureFlash: true
   })
 );
+
+// Log out
+router.delete('/logout', (req, res) => {
+  req.logout(() => {
+    res.redirect('/');
+  });
+})
 
 // router.post("/main", async (req, res) => {
 //   try {
