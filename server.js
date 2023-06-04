@@ -1,13 +1,14 @@
 const express = require("express");
+const router = express.Router();
 const path = require("path");
+const passport = require("passport");
 const bodyParser = require("body-parser");
-const router = require("./public/back-end/routes/routing.js");
 const pool = require("./public/back-end/db.js");
 const { log } = require("console");
 const bcrypt = require("bcrypt");
 const flash = require("express-flash");
 const session = require("express-session");
-const passport = require("passport");
+
 const cookieParser = require('cookie-parser');
 
 const initializePassport = require("./public/back-end/passport");
@@ -52,16 +53,59 @@ app.use(
     saveUninitialized: false,
   })
 );
-app.use(express.static("public")); // insteed of sending every file alone this would help u sending one file
-app.use(bodyParser()); // this allow u to manage reqs
-app.use("/", router); // router configeration you need it to use router.get but app.get u don't need to do that
-
-
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static("public")); // insteed of sending every file alone this would help u sending one file
+app.use(bodyParser()); // this allow u to manage reqs
+app.use(router); // router configeration you need it to use router.get but app.get u don't need to do that
+
 app.use(cookieParser());
 
 // get pages
+router.get("/", checkNotAuthenticated, (req, res) => {
+
+  res.sendFile(path.join(__dirname, "/public/front-end/html/welcome.html"));
+
+});
+//===================
+router.get("/signup", checkNotAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/signup.html"));
+});
+//===================
+router.get("/login", checkNotAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/login.html"));
+});
+//===================
+router.get("/main", checkAuthenticated, (req, res) => {
+
+  res.sendFile(path.join(__dirname, "/public/front-end/html/main.html"));
+
+});
+//===================
+router.get("/my-meds", checkAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/medsTable.html"));
+});
+//===================
+router.get("/health-news", checkAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/health-news.html"));
+});
+//===================
+router.get("/settings", checkAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/settings.html"));
+});
+//===================
+router.get("/otp", checkNotAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/otp.html"));
+});
+//===================
+// the * means any miss spiled rout will lead to 404 page
+router.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/front-end/html/404.html"));
+});
+//===================
+
+
+//module.exports = router will make this file avalible outside this folder
 
 // post pages
 
@@ -127,6 +171,22 @@ router.post(
 //   }
 // });
 
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}
+
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect('/main')
+  }
+  next()
+}
+
+module.exports = checkAuthenticated;
+
 app.listen(5500, async () => {
   console.log("hi");
   // const user = await pool.query(
@@ -135,3 +195,5 @@ app.listen(5500, async () => {
   // );
   // console.log(user)
 });
+
+

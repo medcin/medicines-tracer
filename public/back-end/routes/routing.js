@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 
+
 router.get("/", (req, res) => {
 
   res.sendFile(path.join(__dirname, "/../../front-end/html/welcome.html"));
@@ -16,7 +17,7 @@ router.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "/../../front-end/html/login.html"));
 });
 //===================
-router.get("/main", (req, res) => {
+router.get("/main", checkAuthenticated, (req, res) => {
 
   res.sendFile(path.join(__dirname, "/../../front-end/html/main.html"));
 
@@ -45,4 +46,4 @@ router.get("*", (req, res) => {
 //===================
 
 
-module.exports = router; // will make this file avalible outside this folder
+//module.exports = router will make this file avalible outside this folder

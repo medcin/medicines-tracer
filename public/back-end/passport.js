@@ -33,7 +33,7 @@ async function initialize(passport, getUserByEmail, getUserById) {
     })
     passport.deserializeUser(async (id, done) => {
         const user = await getUserById(id)
-        return done(error, user)
+        return done(null, user)
     })
 }
 
