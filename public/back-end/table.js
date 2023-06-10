@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendar = new Calendar("#calendar", {
     defaultView: "week",
     usageStatistics: false,
-    
+
 
     template: {
       monthDayname: function (dayname) {
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
 
-    disableDblClick: true, // Disable double-click to create a new event
+    disableDblClick: false, // Disable double-click to create a new event
 
     disableClick: function (schedule) {
       return schedule.category === "milestone"; // Disable click on milestone events
@@ -29,34 +29,26 @@ document.addEventListener("DOMContentLoaded", function () {
         tooltip: "KSA", // Set the timezone tooltip
       },
     ],
+    useFormPopup: true,
+    useDetailPopup: true, // Disable the detail popup for events
 
-    useDetailPopup: false, // Disable the detail popup for events
+    isReadOnly: false, // Make the calendar read-only
 
-    isReadOnly: true, // Make the calendar read-only
+    disableDrag: false, // Disable dragging events
+    disableResize: false, // Disable resizing events
 
-    disableAllday: true, // Disable the all-day option
-
-    disableSchedule: true, // Disable creating, modifying, and deleting events
-
-    disableDrag: true, // Disable dragging events
-
-    disableResize: true, // Disable resizing events
-    
   });
-  
-  calendar.setOptions({ 
-    week: { 
+
+  calendar.setOptions({
+    week: {
       taskView: false,
       eventView: ["time"],
       hourStart: 00,
       hourEnd: 24,
       showNowIndicator: false,
-
-
-
     },
-
   });
+
 
   calendar.createEvents([
     {
