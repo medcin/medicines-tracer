@@ -6,16 +6,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link  rel="stylesheet" href="../css/style.css">
-    <link
-      rel="stylesheet"
-      href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css"
-      />
+    <link  rel="stylesheet" href="front-end/css/style.css">
+    
+    <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.js"></script>
+    <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script>
+    <script src="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.js"></script>
+    <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
+    <script src="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.js"></script>
+
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css"/>
+    
     <title>my-meds</title>
   </head>
   <body>
     <header>
-      <h1>track your medicins here!</h1>
+      <h1>track medicins news here!</h1>
       <nav>
           <ul>
               <li><a href="main">Home</a></li>
@@ -29,14 +38,15 @@
       </nav>
   </header>
     <div id="calendar" style="height: 800px"></div>
-<form id="appointmentform">
-  <input type="text" id="title" placeholder="Medicine Name" />
-  <input type="text" id="start" placeholder="start time" />
-  <input type="text" id="end" placeholder="end time" />
-  <button type="submit" id="submit">Add</button>
+
+  <form id="appointmentform">
+    <input type="text" id="title" placeholder="Medicine Name" />
+    <input type="text" id="start" placeholder="start time" />
+    <input type="text" id="end" placeholder="end time" />
+    <button type="submit" id="submit">Add</button>
 </form>
 
-    <script src="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.js"></script>
+    <!--<script src="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.js"></script>-->
     <script src="../../back-end/table.js"></script>
     <footer class ="footer">
       <p>&copy; CPIT-252</p>
