@@ -161,6 +161,7 @@ function checkNotAuthenticated(req, res, next) {
   next();
 }
 //------------------------------------------------------------------------------------------
-app.listen(3000, async () => {
-  console.log("hi");
+let server = 3000;
+app.listen(server, async () => {
+  console.log("hi from server " + server);
 });
