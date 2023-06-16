@@ -97,6 +97,8 @@ router.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/front-end/html/404.html"));
 });
 //===================
+// Add this route to your server file
+
 
 //------------------------------------------------------------------------------------------
 // post pages
@@ -115,6 +117,49 @@ router.post("/otp", async (req, res) => {
   }
 });
 
+//------------------------------------------------------------------------------------------
+// CALENDAR
+// Add this route to your server file
+router.post("/events", async (req, res) => {
+  try {
+    const { title, start, end} = req.body;
+    console.log(req.body);
+
+    // Store the event data in the database using appropriate database operations
+    // You'll need to modify this code to match your database structure and library
+
+    // Example using the "pool" object to execute an SQL query
+    await pool.query(
+      "INSERT INTO userMeds (start, end,title) VALUES ($1, $2, $3)",
+      [start, end, title]
+    );
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error.message);
+    res.sendStatus(500);
+  }
+});
+
+router.get("/events", async (req, res) => {
+  try {
+    // Retrieve the events from the database using appropriate database operations
+    // You'll need to modify this code to match your database structure and library
+
+    // Example using the "pool" object to execute an SQL query
+    console.log([req.user]);
+    console.log([req.user.rows[0].email]);
+    console.log([res.user.rows[0].email]);
+    const result = await pool.query("SELECT * FROM userMeds where email = $1", [req.user.rows[0].email] ); 
+    console.log(result.rows);
+    const events = result.rows;
+
+    res.status(200).json(events);
+  } catch (error) {
+    console.error(error.message);
+    res.sendStatus(500);
+  }
+});
 //------------------------------------------------------------------------------------------
 // OTP
 router.post("/login", (req, res) => {
