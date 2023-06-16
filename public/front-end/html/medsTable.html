@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link  rel="stylesheet" href="front-end/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.min.css">
+  
+</head>
+<body>
+  <header>
+    <h1>track your Medicines here!</h1>
+    <nav>
+        <ul>
+            <li><a href="main">Home</a></li>
+            <li><a href="my-meds">My Medicines</a></li>
+            <li><a href="health-news">health news</a></li>
+            <li><a href="settings">Setting</a></li>
+            <form  id ="logout" action="/logout?_method=DELETE" method="POST">
+
+                <button id ="logout" type="submit">Log out</button>
+            </form>
+        </ul>
+    </nav>
+</header>
+  <form id="appointmentform">
+    <input type="text" id="title" placeholder="Medicines">
+    <input type="datetime-local" id="start">
+    <input type="datetime-local" id="end">
+    <button type="submit">Save Medicine</button>
+    <button id="previousWeekBtn">Previous Week</button>
+    <button id="nextWeekBtn">Next Week</button>
+
+  <div id="calendar" style="height: 800px;"></div>
+  </form>
+  <footer class ="footer">
+    <p>&copy; CPIT-252</p>
+</footer> 
+  <script src="https://uicdn.toast.com/tui.code-snippet/latest/tui-code-snippet.min.js"></script>
+  <script src="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.min.js"></script>
+  <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.min.js"></script>
+  <script src="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.min.js"></script>
+  <script src="../../back-end/table.js"></script>
+</body>
+</html>
+
