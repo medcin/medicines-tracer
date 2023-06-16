@@ -1,4 +1,111 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const Calendar = tui.Calendar;
+
+  const calendar = new Calendar("#calendar", {
+    defaultView: "week",
+    usageStatistics: false,
+    // Rest of the calendar options...
+    useFormPopup: false,
+    useDetailPopup: false,
+    // Rest of the options...
+    taskView: false,
+    eventView: ["time"],
+    hourStart: 00,
+    hourEnd: 24,
+    showNowIndicator: false,
+  });
+
+
+  let form = document.getElementById("appointmentform");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const title = document.getElementById("title").value;
+    const start = document.getElementById("start").value;
+    const end = document.getElementById("end").value;
+
+    let appointment = {
+      id: String(Date.now()),
+      calendarId: "1",
+      title: title,
+      category: "time",
+      dueDateClass: "",
+      start: start,
+      end: end,
+    };
+
+    calendar.createSchedules([appointment]);
+    form.reset();
+  });
+});
+
+
+
+
+
+
+
+
+/***document.addEventListener("DOMContentLoaded", function () {
+  const Calendar = tui.Calendar;
+
+  const calendar = new Calendar("#calendar", {
+    defaultView: "week",
+    usageStatistics: false,
+    // Rest of the calendar options...
+
+    useFormPopup: true,
+    useDetailPopup: true,
+    // Rest of the options...
+  });
+
+  calendar.setOptions({
+    week: {
+      taskView: false,
+      eventView: ["time"],
+      hourStart: 00,
+      hourEnd: 24,
+      showNowIndicator: false,
+    },
+  });
+
+  calendar.createSchedules([
+    {
+      id: "1",
+      calendarId: "1",
+      title: "pandol",
+      category: "time",
+      dueDateClass: "",
+      start: "2023-06-10T22:30:00+03:00",
+      end: "2023-06-10T23:30:00+03:00",
+    },
+  ]);
+
+  let form = document.getElementById("appointmentform");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const title = document.getElementById("title").value;
+    const start = document.getElementById("start").value;
+    const end = document.getElementById("end").value;
+
+    let appointment = {
+      id: String(Date.now()),
+      calendarId: "1",
+      title: title,
+      category: "time",
+      dueDateClass: "",
+      start: start,
+      end: end,
+    };
+
+    calendar.createSchedules([appointment]);
+    form.reset();
+  });
+});
+
+
+
+/*document.addEventListener("DOMContentLoaded", function () {
+
   const Calendar = tui.Calendar; // Make sure tui.Calendar is available
 
   const calendar = new Calendar("#calendar", {
@@ -15,9 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
       },
     },
-
     disableDblClick: false, // Disable double-click to create a new event
-
     disableClick: function (schedule) {
       return schedule.category === "milestone"; // Disable click on milestone events
     },
@@ -29,14 +134,12 @@ document.addEventListener("DOMContentLoaded", function () {
         tooltip: "KSA", // Set the timezone tooltip
       },
     ],
+    
     useFormPopup: true,
     useDetailPopup: true, // Disable the detail popup for events
-
     isReadOnly: false, // Make the calendar read-only
-
     disableDrag: false, // Disable dragging events
     disableResize: false, // Disable resizing events
-
   });
 
   calendar.setOptions({
@@ -61,6 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
       end: "2023-06-10T23:30:00+3:00",
     },
   ]);
+
 
   let form = document.getElementById("appointmentform");
   form.addEventListener("submit", (e) => {
