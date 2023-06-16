@@ -81,13 +81,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fetch events from the server and update the calendar
   function fetchEvents() {
     fetch("/events")
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(data => {
         console.log("Retrieved events:", data);
         calendar.createSchedules(data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error("Error fetching events:", error);
+        // Display an error message to the user
+        const errorMessage = "Failed to fetch events. Please try again later.";
+        alert(errorMessage);
       });
   }
 
@@ -120,11 +128,15 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then((response) => {
         if (response.ok) {
+          const errorMessage = "Medicine stored successfully.";
+          alert(errorMessage);
           console.log("Event stored successfully");
           form.reset();
           // Fetch events again to update the calendar with the newly added event
           fetchEvents();
         } else {
+          const errorMessage = "Failed to store Medicine.";
+          alert(errorMessage);
           console.error("Failed to store event");
         }
       })

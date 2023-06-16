@@ -99,7 +99,6 @@ router.get("*", (req, res) => {
 //===================
 // Add this route to your server file
 
-
 //------------------------------------------------------------------------------------------
 // post pages
 // Signup
@@ -108,8 +107,8 @@ router.post("/otp", async (req, res) => {
     const { fullName, userName, email, number, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await pool.query(
-      "INSERT INTO public.users (name, phone, email, password, username) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [fullName, number, email, hashedPassword, userName]
+      "INSERT INTO public.users (name, phone, password, username, email) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [fullName, number, hashedPassword, userName, email]
     );
     res.redirect("/otp");
   } catch {
@@ -122,17 +121,18 @@ router.post("/otp", async (req, res) => {
 // Add this route to your server file
 router.post("/events", async (req, res) => {
   try {
-    const { title, start, end} = req.body;
-    console.log(req.body);
+    const { title, start, end } = req.body;
+    const id = req.user.rows[0].user_id;
 
     // Store the event data in the database using appropriate database operations
     // You'll need to modify this code to match your database structure and library
 
     // Example using the "pool" object to execute an SQL query
-    await pool.query(
-      "INSERT INTO userMeds (start, end,title) VALUES ($1, $2, $3)",
-      [start, end, title]
-    );
+
+    // Insert a new row into the userMeds table
+    const query = 'INSERT INTO public."usermeds" (start, "end", title, user_id) VALUES ($1, $2, $3, $4)';
+    const values = [start, end, title, id];
+    await pool.query(query, values);
 
     res.sendStatus(200);
   } catch (error) {
@@ -145,13 +145,13 @@ router.get("/events", async (req, res) => {
   try {
     // Retrieve the events from the database using appropriate database operations
     // You'll need to modify this code to match your database structure and library
-
     // Example using the "pool" object to execute an SQL query
-    console.log([req.user]);
-    console.log([req.user.rows[0].email]);
-    console.log([res.user.rows[0].email]);
-    const result = await pool.query("SELECT * FROM userMeds where email = $1", [req.user.rows[0].email] ); 
-    console.log(result.rows);
+
+    const result = await pool.query(
+      "SELECT * FROM usermeds where user_id = $1",
+      [req.user.rows[0].user_id]
+    );
+    console.log(result);
     const events = result.rows;
 
     res.status(200).json(events);
