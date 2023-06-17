@@ -1,12 +1,50 @@
 # medicines-tracker
-this project will let you track your medicines 
 
 
-in this [tag](https://github.com/medcin/medicines-tracer/commit/229ea35ceb8643c4e4a38b293e45d87aa1c6751d)  I have used hbs 
+Our website allows you to register and then add the medications you need over time. Once you've added your medications, you will receive a text message notification on your mobile phone as a reminder. This feature helps you stay organized and ensures you never miss taking your prescribed medications.
 
 
-I chose to use Handlebars because it was difficult to copy and paste headers and footers into every HTML file I had. Making any changes would require modifying each file, which was time-consuming and error-prone. I searched for a solution for almost a month, but couldn't find one that worked well.
+# some pictures of our interface
 
-I haven't committed any of my attempts, as they were poorly executed and I ended up deleting them. However, after learning about Handlebars, I was thrilled to discover that it's an implementation of the MVC design pattern. This made me even more excited to use it.
+### the weclome page, this pagee is what you will see one u go to our website, without being loging in.
 
-With some rearrangement, I can make the Handlebars implementation even better. Using Handlebars allows HTML to inherit from a parent HTML file, making it easier to maintain.
+
+![welcomePage](https://github.com/medcin/medicines-tracer/assets/120954979/649bd015-669e-4bb5-aedb-f8f1060c496e)
+
+
+---
+
+### this is our signup page
+
+![signupPage](https://github.com/medcin/medicines-tracer/assets/120954979/a168830d-924a-44c9-ae61-f9dc1fe64db0)
+
+---
+
+### after you sign up you will go to a OTP page 
+
+![otpPage](https://github.com/medcin/medicines-tracer/assets/120954979/109dbc8d-8491-4f7c-9289-3fbdad32c3b9)
+
+---
+
+### then you will go to the login page
+
+![loginPage](https://github.com/medcin/medicines-tracer/assets/120954979/57a4b2af-5626-432c-ad61-0ac466cc1e91)
+
+---
+
+### after u login you will go to the home page
+
+![mainPage](https://github.com/medcin/medicines-tracer/assets/120954979/831ac5c0-a27c-49b8-aec4-39acaa3e147f)
+
+---
+### you will navigate to medicine page
+![tablePage](https://github.com/medcin/medicines-tracer/assets/120954979/7adb1df7-ae02-42b8-9a49-42ab03b31b82)
+
+
+
+---
+# realace 0.1.0 NOTEs
+
+The current implementation is encountering issues with fetching data from the database. These problems mainly arise on our website due to our manual handling of everything using plain JavaScript with Express, without employing any frameworks. However, future versions will be developed using frameworks and a different database. We have manually implemented security measures for password protection and other aspects. In the upcoming releases, we plan to integrate a third-party service. Currently, the application is not functioning correctly, so we have decided not to deploy it to any hosting provider at this time.
+
+
