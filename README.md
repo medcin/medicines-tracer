@@ -43,7 +43,7 @@ Our website allows you to register and then add the medications you need over ti
 
 
 ---
-# realace 0.1.0 NOTEs
+# release 0.1.0 NOTEs
 
 The current implementation is encountering issues with fetching data from the database. These problems mainly arise on our website due to our manual handling of everything using plain JavaScript with Express, without employing any frameworks. However, future versions will be developed using frameworks and a different database. We have manually implemented security measures for password protection and other aspects. In the upcoming releases, we plan to integrate a third-party service. Currently, the application is not functioning correctly, so we have decided not to deploy it to any hosting provider at this time.
 
